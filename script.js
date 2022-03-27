@@ -35,6 +35,23 @@ $(document).ready(function(){
      });
     });
     
+    const table = document.querySelector("table");
+    const className = "selected";
+    let mouseIsDown = false;
+    
+    const colorTd = (e) => (e.target.tagName = "TD" && e.target.classList.add("selected"));
+    table.onclick = (e) => colorTd(e);
+    
+    document.onmousedown = (e) => {
+      mouseIsDown = true;
+      colorTd(e);
+    };
+    
+    document.onmouseup = () => (mouseIsDown = false);
+    table.onmouseover = (e) => mouseIsDown && colorTd(e);
+
+
+
    });
 
 
@@ -55,4 +72,6 @@ $(document).ready(function(){
   
     return array;
   }
+  
+
   

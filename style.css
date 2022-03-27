@@ -1,4 +1,4 @@
-table {
+/*table {
 margin: 0 auto;
 font-size: large;
 border: 1px solid black;
@@ -40,3 +40,19 @@ table, th, td
 th {
     font-weight:bold;
 }
+*/
+
+td {
+    cursor: pointer;
+    font-size: 22px;
+  }
+  
+  td.selected {
+    background-color: rgb(223, 219, 33);
+  }
+  
+  table::selection,
+  tr::selection,
+  td::selection {
+    background-color: rgb(99, 22, 199);
+  }
