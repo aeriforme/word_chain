@@ -6,7 +6,7 @@ $(document).ready(function(){
       success:function(data)
       {
        var words_data = data.split(/\r?\n|\r/);
-       var table_data = '<table class="table table-bordered table-striped">';
+       var table_data = '<table class="table">';
        
        var shuffled_words_data = shuffle(words_data);
 
@@ -18,14 +18,14 @@ $(document).ready(function(){
         table_data += '<tr>';
         for(var cell_count=0; cell_count<cell_data.length; cell_count++)
         {
-         if(count === 0)
-         {
-          table_data += '<th>'+cell_data[cell_count]+'</th>';
-         }
-         else
-         {
+         //if(count === 0)
+         //{
+         // table_data += '<th>'+cell_data[cell_count]+'</th>';
+         //}
+         //else
+         //{
           table_data += '<td>'+cell_data[cell_count]+'</td>';
-         }
+         //}
         }
         table_data += '</tr>';
        }
@@ -35,24 +35,49 @@ $(document).ready(function(){
      });
     });
     
-    const table = document.querySelector("table");
-    const className = "selected";
-    let mouseIsDown = false;
+    var table = document.querySelector('table')
+    var selectedCells = table.getElementsByClassName('selected')
     
-    const colorTd = (e) => (e.target.tagName = "TD" && e.target.classList.add("selected"));
-    table.onclick = (e) => colorTd(e);
+    table.addEventListener('click', function(e) {
+      var td = e.target
+      
+      if (td.tagName !== 'TD') {
+        return
+      }
+      
+      if (selectedCells.length) {
+        selectedCells[0].className = ''    
+      }
     
-    document.onmousedown = (e) => {
-      mouseIsDown = true;
-      colorTd(e);
-    };
-    
-    document.onmouseup = () => (mouseIsDown = false);
-    table.onmouseover = (e) => mouseIsDown && colorTd(e);
+      td.className = 'selected'
+    });
+ 
 
+
+    //const table = document.querySelector("table");
+    //const className = "selected";
+    //let mouseIsDown = false;
+    
+    //const colorTd = (e) => (e.target.tagName = "TD" && e.target.classList.add("selected"));
+    //table.onclick = (e) => colorTd(e);
+    
+    //document.onmousedown = (e) => {
+    //  mouseIsDown = true;
+   // colorTd(e);
+    //};
+    
+    //document.onmouseup = () => (mouseIsDown = false);
+    //table.onmouseover = (e) => mouseIsDown && colorTd(e);
+
+    //const colorTd2 = (e) => (e.target.tagName = "TD" && e.target.classList.add("deselected"));
+    //table.onmouseout = (e) => colorTd2(e);
 
 
    });
+
+  
+
+
 
 
    function shuffle(array) {
@@ -74,4 +99,4 @@ $(document).ready(function(){
   }
   
 
-  
+  //   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />

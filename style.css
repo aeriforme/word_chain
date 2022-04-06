@@ -42,17 +42,35 @@ th {
 }
 */
 
-td {
+/*td {
     cursor: pointer;
     font-size: 22px;
   }
   
   td.selected {
-    background-color: rgb(223, 219, 33);
+    background-color: rgb(27, 119, 150);
+  }
+
+  td.deselected {
+    background-color: rgb(33, 247, 122);
   }
   
   table::selection,
   tr::selection,
   td::selection {
-    background-color: rgb(99, 22, 199);
+    background-color: rgb(223, 14, 118);
+  }*/
+  table {
+    cursor: text;
+  }
+  tr {
+    background-color:white;
+  }
+  td {
+    font-size: 14;
+    cursor: default;
+  }
+  
+  td.selected {
+    background-color: red;
   }
